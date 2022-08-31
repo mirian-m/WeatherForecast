@@ -154,9 +154,9 @@
 		84D48AE828BE312B006C7566 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				84D48B1B28BF79F3006C7566 /* Weather */,
 				84D48B1628BF7887006C7566 /* Country */,
 				84D48AFB28BF3832006C7566 /* CurrentWeather */,
+				84D48B1B28BF79F3006C7566 /* Weather */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";

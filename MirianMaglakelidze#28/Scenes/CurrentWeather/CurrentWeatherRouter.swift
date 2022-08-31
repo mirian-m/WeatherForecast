@@ -26,7 +26,7 @@ class CurrentWeatherRouter: NSObject, CurrentWeatherRoutingLogic, CurrentWeather
   // MARK: Routing
     func routeToWeatherForecast(segue: UIStoryboardSegue?) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as? WeatherDetailsViewController else { return }
+        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "WeatherDetailsViewController") as? WeatherDetailsViewController else { return }
         var destinationDS = destinationVC.router!.dataStore!
         passDataToSomewhere(source: dataStore!, destination: &destinationDS)
         navigateToWeatherDetails(source: viewController!, destination: destinationVC)
