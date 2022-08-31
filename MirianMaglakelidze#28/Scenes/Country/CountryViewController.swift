@@ -20,6 +20,7 @@ class CountryViewController: UITableViewController, CountryDisplayLogic {
     var interactor: CountryBusinessLogic?
     var router: (NSObjectProtocol & CountryRoutingLogic & CountryDataPassing)?
     
+    @IBOutlet weak var countryIndicator: UIActivityIndicatorView!
     private var countries = [CountryModel]()
     // MARK: Object lifecycle
     
@@ -35,6 +36,7 @@ class CountryViewController: UITableViewController, CountryDisplayLogic {
     // MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.countryIndicator.startAnimating()
         viewSetup()
         getCountries()
     }
@@ -67,6 +69,7 @@ class CountryViewController: UITableViewController, CountryDisplayLogic {
     
     func displayCountries(viewModel: Country.GetCountry.ViewModel) {
         DispatchQueue.main.async { [weak self] in
+            self?.countryIndicator.stopAnimating()
             self?.countries = viewModel.tableModel
             self?.tableView.reloadData()
         }

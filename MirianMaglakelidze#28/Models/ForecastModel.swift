@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 final class WeatherForecastModel: WeatherViewModel {
-    var day: String = ""
+    var time: String = ""
 }
 
 

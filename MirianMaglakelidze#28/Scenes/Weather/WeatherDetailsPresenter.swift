@@ -39,10 +39,9 @@ class WeatherDetailsPresenter: WeatherDetailsPresentationLogic
             weatherForecastModel.weatherImage = getImage(urlString: urlString)
             weatherForecastModel.temperature = "\(celciusValue)"
             
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-m-dd HH:mm:ss"
-            let date = dateFormatter.date (from: model.time!)
-//            weatherForecastModel.day = model.name!
+            let stringIndex = model.time!.firstIndex(of: " ")
+            let time = model.time?.substring(from: stringIndex!).trimmingCharacters(in: .whitespaces)
+            weatherForecastModel.time = time!
             weatherForecast.append(weatherForecastModel)
         }
         return weatherForecast

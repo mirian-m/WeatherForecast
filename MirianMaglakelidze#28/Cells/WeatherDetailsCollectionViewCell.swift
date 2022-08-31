@@ -14,7 +14,7 @@ class WeatherDetailsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var tempLb: UILabel!
     
     func configureView(from model: WeatherForecastModel) {
-        self.timeLb.text = model.day
+        self.timeLb.text = model.time
         self.weatherImage.image = model.weatherImage
         self.tempLb.text = model.temperature
     }
