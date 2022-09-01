@@ -17,3 +17,17 @@ extension Double {
         self = (self * m).rounded() / m
     }
 }
+
+extension Date {
+    func dayOfWeek() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: self).capitalized
+    }
+}
+
+extension Date {
+    mutating func addOneDay() {
+        self = Calendar.current.date(byAdding: .day, value: 1, to: self)!
+    }
+}

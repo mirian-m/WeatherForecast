@@ -17,11 +17,15 @@ protocol WeatherDetailsDisplayLogic: AnyObject {
 }
 
 class WeatherDetailsViewController: UITableViewController, WeatherDetailsDisplayLogic {
+    
     var interactor: WeatherDetailsBusinessLogic?
     var router: (NSObjectProtocol & WeatherDetailsRoutingLogic & WeatherDetailsDataPassing)?
-    private var offsets = [IndexPath: CGFloat]()
     
+    // MARK:- Private Var
+    private var offsets = [IndexPath: CGFloat]()
     private var weatherForecast = [WeatherForecastModel]()
+    private var days = [String]()
+    
     // MARK: Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -54,12 +58,20 @@ class WeatherDetailsViewController: UITableViewController, WeatherDetailsDisplay
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getWeekDays()
         getWeatherForecast()
+        
+    }
+    
+    func getWeekDays() {
+        var date = Date()
+        for _ in 0...4 {
+            days.append(date.dayOfWeek()!)
+            date.addOneDay()
+        }
     }
     
     // MARK: Do something
-    
-    //@IBOutlet weak var nameTextField: UITextField!
     
     func getWeatherForecast() {
         let request = WeatherDetails.GetWeatherForecast.Request()
@@ -79,15 +91,26 @@ extension WeatherDetailsViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "WetherTableViewCell", for: indexPath) as? WetherTableViewCell else { return UITableViewCell () }
         cell.setScrollPosition(x: offsets[indexPath] ?? 0)
-
+        
         if !weatherForecast.isEmpty {
             let startIndex = indexPath.section * 8
             let endIndex = startIndex + 8
             let tempArray = Array (self.weatherForecast[startIndex..<endIndex])
             cell.updateView(with: tempArray)
         }
-        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let header = view as? UITableViewHeaderFooterView else { return }
+        header.textLabel?.font = .systemFont(ofSize: 18, weight: .semibold)
+        header.textLabel?.frame = CGRect(x: header.bounds.origin.x, y: header.bounds.origin.y, width: 100, height: 50)
+        header.textLabel?.textColor = .black
+        header.textLabel?.text = header.textLabel?.text
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        days[section]
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -95,8 +118,7 @@ extension WeatherDetailsViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        TableViewCollectionViewConstants.tableViewNumberOfSection
-        
+        days.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
