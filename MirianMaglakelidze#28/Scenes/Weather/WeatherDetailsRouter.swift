@@ -25,23 +25,4 @@ class WeatherDetailsRouter: NSObject, WeatherDetailsRoutingLogic, WeatherDetails
     weak var viewController: WeatherDetailsViewController?
     var dataStore: WeatherDetailsDataStore?
     
-    // MARK: Routing
-//    func routeToWeatherForecast(segue: UIStoryboardSegue?) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as? WeatherDetailsViewController else { return }
-//        var destinationDS = destinationVC.router!.dataStore!
-//        passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-//        navigateToWeatherDetails(source: viewController!, destination: destinationVC)
-//    }
-//
-//    //   MARK: Navigation
-//
-//    func navigateToWeatherDetails(source: WeatherDetailsViewController, destination: UIViewController) {
-//        source.show(destination, sender: nil)
-//    }
-//
-//    //   MARK: Passing data
-//    func passDataToSomewhere(source: WeatherDetailsDataStore, destination: inout WeatherDetailsDataStore) {
-//        destination.countryCoordinate = source.countryCoordinate
-//    }
 }

@@ -32,7 +32,7 @@ class WeatherDetailsInteractor: WeatherDetailsBusinessLogic, WeatherDetailsDataS
         worker = APIManeger()
         
         let urlString = WeatherAPI.forecastFor5DaysBaseUrl
-        guard let urlRequest = worker?.createWeatherUrl(with: urlString, lat: "33", lon: "65", key: WeatherAPI.APIKey) else { return }
+        guard let urlRequest = worker?.createWeatherUrl(with: urlString, lat: countryCoordinate!.lat, lon: countryCoordinate!.lon, key: WeatherAPI.APIKey) else { return }
         
         worker?.fetch(by: urlRequest, complition: { [weak self] (result: Result<LongWeatherForecast, Error>) in
             var response = WeatherDetails.GetWeatherForecast.Response()
