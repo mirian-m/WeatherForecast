@@ -20,7 +20,7 @@ protocol CurrentWeatherDataStore {
     var countryCoordinate: (lat: String, lon: String)? { get set }
 }
 
-class CurrentWeatherInteractor: CurrentWeatherBusinessLogic, CurrentWeatherDataStore {
+final class CurrentWeatherInteractor: CurrentWeatherBusinessLogic, CurrentWeatherDataStore {
     var countryCoordinate: (lat: String, lon: String)?
     var presenter: CurrentWeatherPresentationLogic?
     var worker: APIManeger?
@@ -37,14 +37,17 @@ class CurrentWeatherInteractor: CurrentWeatherBusinessLogic, CurrentWeatherDataS
         else { return }
         
         worker?.fetch(by: urlRequest, complition: { [weak self] (result: Result<Weather, Error>) in
-            var response = CurrentWeather.GetWeather.Response()
-            switch result {
-            case .success(let weather):
-                response.weather = weather
-            case .failure(let error):
-                print(error)
+            DispatchQueue.main.async { [weak self] in
+                var response = CurrentWeather.GetWeather.Response()
+                switch result {
+                case .success(let weather):
+                    response.weather = weather
+                case .failure(let error):
+                    print(error)
+                }
+                self?.presenter?.presentCurrenWeather(response: response)
+
             }
-            self?.presenter?.presentCurrenWeather(response: response)
         })
     }
     

@@ -13,15 +13,13 @@
 import UIKit
 
 @objc protocol WeatherDetailsRoutingLogic {
-//    func routeToWeatherForecast(segue: UIStoryboardSegue?)
 }
 
 protocol WeatherDetailsDataPassing {
     var dataStore: WeatherDetailsDataStore? { get }
 }
 
-class WeatherDetailsRouter: NSObject, WeatherDetailsRoutingLogic, WeatherDetailsDataPassing {
-    
+final class WeatherDetailsRouter: NSObject, WeatherDetailsRoutingLogic, WeatherDetailsDataPassing {
     weak var viewController: WeatherDetailsViewController?
     var dataStore: WeatherDetailsDataStore?
     

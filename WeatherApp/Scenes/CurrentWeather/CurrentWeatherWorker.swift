@@ -12,7 +12,7 @@
 
 import UIKit
 
-class CurrentWeatherWorker {
+final class CurrentWeatherWorker {
     
     func createWeatherUrl(with baseUrl: String, lag: String, lat: String, key: String) -> URLRequest? {
         let urlsString = baseUrl

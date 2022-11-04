@@ -21,7 +21,7 @@ protocol CountryDataStore {
     var countryCoordinate: (lat: String, lon: String) { get set }
 }
 
-class CountryInteractor: CountryBusinessLogic, CountryDataStore {
+final class CountryInteractor: CountryBusinessLogic, CountryDataStore {
     var presenter: CountryPresentationLogic?
     var worker: APIManeger?
     var countryCoordinate = (lat: "String", lon: "String")
@@ -32,13 +32,15 @@ class CountryInteractor: CountryBusinessLogic, CountryDataStore {
     func getCountries(request: Country.GetCountry.Request) {
         worker = APIManeger()
         worker?.fetchData(by: CountryConstants.url, complition: { [weak self] (result: Result<[CountryModel], Error>) in
-            switch result {
-            case .success(let countries) :
-                self?.countries = countries
-            case .failure(let error) :
-                print(error)
+            DispatchQueue.main.async { [weak self] in
+                switch result {
+                case .success(let countries) :
+                    self?.countries = countries
+                case .failure(let error) :
+                    print(error)
+                }
+                self?.presenter?.presentCountries(response: Country.GetCountry.Response(countries: self!.countries))
             }
-            self?.presenter?.presentCountries(response: Country.GetCountry.Response(countries: self!.countries))
         })
     }
     

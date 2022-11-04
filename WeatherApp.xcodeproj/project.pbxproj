@@ -44,7 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		84D48AC528BDF690006C7566 /* MirianMaglakelidze#28.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MirianMaglakelidze#28.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		84D48AC528BDF690006C7566 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D48AC828BDF690006C7566 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84D48ACA28BDF690006C7566 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		84D48ACF28BDF690006C7566 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -93,10 +93,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84CEBB182915714F008DB57A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				84D48B0F28BF5805006C7566 /* WeatherViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		84D48ABC28BDF690006C7566 = {
 			isa = PBXGroup;
 			children = (
-				84D48AC728BDF690006C7566 /* MirianMaglakelidze#28 */,
+				84D48AC728BDF690006C7566 /* WeatherApp */,
 				84D48AC628BDF690006C7566 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -104,18 +112,19 @@
 		84D48AC628BDF690006C7566 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				84D48AC528BDF690006C7566 /* MirianMaglakelidze#28.app */,
+				84D48AC528BDF690006C7566 /* WeatherApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		84D48AC728BDF690006C7566 /* MirianMaglakelidze#28 */ = {
+		84D48AC728BDF690006C7566 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
 				84D48B1228BF5A8B006C7566 /* Extension */,
 				84D48B0928BF390C006C7566 /* Wokers */,
 				84D48AF728BE4710006C7566 /* Cells */,
 				84D48AE828BE312B006C7566 /* Scenes */,
+				84CEBB182915714F008DB57A /* ViewModels */,
 				84D48AE128BE18FC006C7566 /* Models */,
 				84D48ADD28BE168F006C7566 /* Constants */,
 				84D48AC828BDF690006C7566 /* AppDelegate.swift */,
@@ -125,7 +134,7 @@
 				84D48AD328BDF69D006C7566 /* LaunchScreen.storyboard */,
 				84D48AD628BDF69D006C7566 /* Info.plist */,
 			);
-			path = "MirianMaglakelidze#28";
+			path = WeatherApp;
 			sourceTree = "<group>";
 		};
 		84D48ADD28BE168F006C7566 /* Constants */ = {
@@ -141,7 +150,6 @@
 			children = (
 				84D48AE228BE1957006C7566 /* CountryModel.swift */,
 				84D48AE528BE2C7C006C7566 /* Weather.swift */,
-				84D48B0F28BF5805006C7566 /* WeatherViewModel.swift */,
 				84D48B2D28BF949F006C7566 /* LongTermWeatherForecast.swift */,
 				84D48B3028BFA056006C7566 /* ForecastModel.swift */,
 			);
@@ -171,12 +179,12 @@
 		84D48AFB28BF3832006C7566 /* CurrentWeather */ = {
 			isa = PBXGroup;
 			children = (
+				84D48B0028BF388A006C7566 /* CurrentWeatherViewController.swift */,
+				84D48B0128BF388A006C7566 /* CurrentWeatherInteractor.swift */,
 				84D48AFC28BF388A006C7566 /* CurrentWeatherPresenter.swift */,
 				84D48AFD28BF388A006C7566 /* CurrentWeatherWorker.swift */,
 				84D48AFE28BF388A006C7566 /* CurrentWeatherRouter.swift */,
 				84D48AFF28BF388A006C7566 /* CurrentWeatherModels.swift */,
-				84D48B0028BF388A006C7566 /* CurrentWeatherViewController.swift */,
-				84D48B0128BF388A006C7566 /* CurrentWeatherInteractor.swift */,
 			);
 			path = CurrentWeather;
 			sourceTree = "<group>";
@@ -200,12 +208,12 @@
 		84D48B1628BF7887006C7566 /* Country */ = {
 			isa = PBXGroup;
 			children = (
+				84D48AED28BE314C006C7566 /* CountryViewController.swift */,
+				84D48AEE28BE314C006C7566 /* CountryInteractor.swift */,
 				84D48AE928BE314C006C7566 /* CountryPresenter.swift */,
 				84D48AEA28BE314C006C7566 /* CountryWorker.swift */,
 				84D48AEB28BE314C006C7566 /* CountryRouter.swift */,
 				84D48AEC28BE314C006C7566 /* CountryModels.swift */,
-				84D48AED28BE314C006C7566 /* CountryViewController.swift */,
-				84D48AEE28BE314C006C7566 /* CountryInteractor.swift */,
 			);
 			path = Country;
 			sourceTree = "<group>";
@@ -213,12 +221,12 @@
 		84D48B1B28BF79F3006C7566 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				84D48B2428BF7DA0006C7566 /* WeatherDetailsViewController.swift */,
+				84D48B2528BF7DA0006C7566 /* WeatherDetailsInteractor.swift */,
 				84D48B2028BF7DA0006C7566 /* WeatherDetailsPresenter.swift */,
 				84D48B2128BF7DA0006C7566 /* WeatherDetailsWorker.swift */,
 				84D48B2228BF7DA0006C7566 /* WeatherDetailsRouter.swift */,
 				84D48B2328BF7DA0006C7566 /* WeatherDetailsModels.swift */,
-				84D48B2428BF7DA0006C7566 /* WeatherDetailsViewController.swift */,
-				84D48B2528BF7DA0006C7566 /* WeatherDetailsInteractor.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -226,9 +234,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		84D48AC428BDF690006C7566 /* MirianMaglakelidze#28 */ = {
+		84D48AC428BDF690006C7566 /* WeatherApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 84D48AD928BDF69D006C7566 /* Build configuration list for PBXNativeTarget "MirianMaglakelidze#28" */;
+			buildConfigurationList = 84D48AD928BDF69D006C7566 /* Build configuration list for PBXNativeTarget "WeatherApp" */;
 			buildPhases = (
 				84D48AC128BDF690006C7566 /* Sources */,
 				84D48AC228BDF690006C7566 /* Frameworks */,
@@ -238,9 +246,9 @@
 			);
 			dependencies = (
 			);
-			name = "MirianMaglakelidze#28";
+			name = WeatherApp;
 			productName = "MirianMaglakelidze#28";
-			productReference = 84D48AC528BDF690006C7566 /* MirianMaglakelidze#28.app */;
+			productReference = 84D48AC528BDF690006C7566 /* WeatherApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -257,7 +265,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 84D48AC028BDF690006C7566 /* Build configuration list for PBXProject "MirianMaglakelidze#28" */;
+			buildConfigurationList = 84D48AC028BDF690006C7566 /* Build configuration list for PBXProject "WeatherApp" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -270,7 +278,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				84D48AC428BDF690006C7566 /* MirianMaglakelidze#28 */,
+				84D48AC428BDF690006C7566 /* WeatherApp */,
 			);
 		};
 /* End PBXProject section */
@@ -471,12 +479,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "MirianMaglakelidze#28/Info.plist";
+				INFOPLIST_FILE = WeatherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Mirian-maglakelidze.MirianMaglakelidze-28";
+				PRODUCT_BUNDLE_IDENTIFIER = "Mirian-maglakelidze.WeatherApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -489,12 +497,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "MirianMaglakelidze#28/Info.plist";
+				INFOPLIST_FILE = WeatherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Mirian-maglakelidze.MirianMaglakelidze-28";
+				PRODUCT_BUNDLE_IDENTIFIER = "Mirian-maglakelidze.WeatherApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -504,7 +512,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		84D48AC028BDF690006C7566 /* Build configuration list for PBXProject "MirianMaglakelidze#28" */ = {
+		84D48AC028BDF690006C7566 /* Build configuration list for PBXProject "WeatherApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				84D48AD728BDF69D006C7566 /* Debug */,
@@ -513,7 +521,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		84D48AD928BDF69D006C7566 /* Build configuration list for PBXNativeTarget "MirianMaglakelidze#28" */ = {
+		84D48AD928BDF69D006C7566 /* Build configuration list for PBXNativeTarget "WeatherApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				84D48ADA28BDF69D006C7566 /* Debug */,

@@ -1,5 +1,5 @@
 //
-//  WeatherDetailsModels.swift
+//  WeatherDetailsWorker.swift
 //  MirianMaglakelidze#28
 //
 //  Created by Admin on 8/31/22.
@@ -12,18 +12,4 @@
 
 import UIKit
 
-enum WeatherDetails
-{
-  // MARK: Use cases
-  
-  enum GetWeatherForecast {
-    struct Request {}
-    
-    struct Response {
-        var weatherForecast: [Weather]?
-    }
-    struct ViewModel {
-        var forecastModel: [WeatherForecastModel]?
-    }
-  }
-}
+final class WeatherDetailsWorker {}

@@ -12,13 +12,11 @@
 
 import UIKit
 
-protocol WeatherDetailsPresentationLogic
-{
+protocol WeatherDetailsPresentationLogic {
   func presentWeatherForecast(response: WeatherDetails.GetWeatherForecast.Response)
 }
 
-class WeatherDetailsPresenter: WeatherDetailsPresentationLogic
-{
+final class WeatherDetailsPresenter: WeatherDetailsPresentationLogic {
   weak var viewController: WeatherDetailsDisplayLogic?
   
   // MARK: Do something
@@ -48,7 +46,7 @@ class WeatherDetailsPresenter: WeatherDetailsPresentationLogic
         return weatherForecast
     }
 
-    func getImage(urlString: String) -> UIImage? {
+   private func getImage(urlString: String) -> UIImage? {
         guard let url = URL(string: urlString) else { return nil}
         do {
             let data = try Data(contentsOf: url)

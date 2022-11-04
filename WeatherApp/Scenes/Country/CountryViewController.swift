@@ -16,7 +16,7 @@ protocol CountryDisplayLogic: AnyObject {
     func displayCountries(viewModel: Country.GetCountry.ViewModel)
 }
 
-class CountryViewController: UITableViewController, CountryDisplayLogic {
+final class CountryViewController: UITableViewController, CountryDisplayLogic {
     var interactor: CountryBusinessLogic?
     var router: (NSObjectProtocol & CountryRoutingLogic & CountryDataPassing)?
     
@@ -56,23 +56,21 @@ class CountryViewController: UITableViewController, CountryDisplayLogic {
         router.dataStore = interactor
     }
     
-    func viewSetup() {
+    private func viewSetup() {
         self.tableView.register(CountriesTableViewCell.self, forCellReuseIdentifier: CountriesTableViewCell.identifier)
     }
     
     //@IBOutlet weak var nameTextField: UITextField!
     
-    func getCountries() {
+    private func getCountries() {
         let request = Country.GetCountry.Request()
         interactor?.getCountries(request: request)
     }
     
     func displayCountries(viewModel: Country.GetCountry.ViewModel) {
-        DispatchQueue.main.async { [weak self] in
-            self?.countryIndicator.stopAnimating()
-            self?.countries = viewModel.tableModel
-            self?.tableView.reloadData()
-        }
+        countryIndicator.stopAnimating()
+        countries = viewModel.tableModel
+        tableView.reloadData()
     }
 }
 
@@ -95,6 +93,6 @@ extension CountryViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         interactor?.tappedCountryData(request: Country.ShowDetails.Request(country: countries[indexPath.row]))
-        router?.routeToWeather(segue: nil)
+        router?.routeToWeather()
     }
 }

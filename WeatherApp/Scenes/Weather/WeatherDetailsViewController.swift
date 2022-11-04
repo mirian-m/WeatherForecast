@@ -16,7 +16,7 @@ protocol WeatherDetailsDisplayLogic: AnyObject {
     func displayWeatherForecast(viewModel: WeatherDetails.GetWeatherForecast.ViewModel)
 }
 
-class WeatherDetailsViewController: UITableViewController, WeatherDetailsDisplayLogic {
+final class WeatherDetailsViewController: UITableViewController, WeatherDetailsDisplayLogic {
     
     var interactor: WeatherDetailsBusinessLogic?
     var router: (NSObjectProtocol & WeatherDetailsRoutingLogic & WeatherDetailsDataPassing)?
@@ -63,7 +63,7 @@ class WeatherDetailsViewController: UITableViewController, WeatherDetailsDisplay
         
     }
     
-    func getWeekDays() {
+    private func getWeekDays() {
         var date = Date()
         for _ in 0...4 {
             days.append(date.dayOfWeek()!)
@@ -73,7 +73,7 @@ class WeatherDetailsViewController: UITableViewController, WeatherDetailsDisplay
     
     // MARK: Do something
     
-    func getWeatherForecast() {
+  private func getWeatherForecast() {
         let request = WeatherDetails.GetWeatherForecast.Request()
         interactor?.getWeatherForecast(request: request)
     }

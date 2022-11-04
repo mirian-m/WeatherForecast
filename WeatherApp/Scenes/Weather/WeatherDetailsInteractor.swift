@@ -12,8 +12,7 @@
 
 import UIKit
 
-protocol WeatherDetailsBusinessLogic
-{
+protocol WeatherDetailsBusinessLogic {
     func getWeatherForecast(request: WeatherDetails.GetWeatherForecast.Request)
 }
 
@@ -21,7 +20,7 @@ protocol WeatherDetailsDataStore {
     var countryCoordinate: (lat: String, lon: String)? { get set }
 }
 
-class WeatherDetailsInteractor: WeatherDetailsBusinessLogic, WeatherDetailsDataStore {
+final class WeatherDetailsInteractor: WeatherDetailsBusinessLogic, WeatherDetailsDataStore {
     var presenter: WeatherDetailsPresentationLogic?
     var worker: APIManeger?
     var countryCoordinate: (lat: String, lon: String)? = (lat: "String", lon: "String")

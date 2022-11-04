@@ -13,36 +13,36 @@
 import UIKit
 
 @objc protocol CountryRoutingLogic {
-    func routeToWeather(segue: UIStoryboardSegue?)
+    func routeToWeather()
 }
 
 protocol CountryDataPassing {
     var dataStore: CountryDataStore? { get }
 }
 
-class CountryRouter: NSObject, CountryRoutingLogic, CountryDataPassing {
+final class CountryRouter: NSObject, CountryRoutingLogic, CountryDataPassing {
     weak var viewController: CountryViewController?
     var dataStore: CountryDataStore?
     
     // MARK: Routing
     
-    func routeToWeather(segue: UIStoryboardSegue?) {
+    func routeToWeather() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "CurrentWeatherViewController") as? CurrentWeatherViewController else { return }
-        var destinationDS = destinationVC.router!.dataStore!
+        guard var destinationDS = destinationVC.router?.dataStore, let viewController = self.viewController else { return }
         passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-        navigateToWeather(source: viewController!, destination: destinationVC)
+        navigateToWeather(source: viewController, destination: destinationVC)
     }
     
     // MARK: Navigation
     
-    func navigateToWeather(source: CountryViewController, destination: UIViewController) {
+   private func navigateToWeather(source: CountryViewController, destination: UIViewController) {
         source.show(destination, sender: nil)
     }
     
     // MARK: Passing data
     
-    func passDataToSomewhere(source: CountryDataStore, destination: inout CurrentWeatherDataStore) {
+    private func passDataToSomewhere(source: CountryDataStore, destination: inout CurrentWeatherDataStore) {
         destination.countryCoordinate = source.countryCoordinate
     }
 }

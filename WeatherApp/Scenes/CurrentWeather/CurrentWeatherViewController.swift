@@ -13,10 +13,10 @@
 import UIKit
 
 protocol CurrentWeatherDisplayLogic: class {
-    func displaySomething(viewModel: CurrentWeather.GetWeather.ViewModel)
+    func displayCurrentWeather(viewModel: CurrentWeather.GetWeather.ViewModel)
 }
 
-class CurrentWeatherViewController: UIViewController, CurrentWeatherDisplayLogic {
+final class CurrentWeatherViewController: UIViewController, CurrentWeatherDisplayLogic {
     
     // MARK:- @IBOutlet
     @IBOutlet weak var indicator: UIActivityIndicatorView!
@@ -63,23 +63,21 @@ class CurrentWeatherViewController: UIViewController, CurrentWeatherDisplayLogic
     }
     
     @IBAction func seeMoreWeatherForecast(_ sender: Any) {
-        router?.routeToWeatherForecast(segue: nil)
+        router?.routeToWeatherForecast()
     }
     
     // MARK: Do something
     
-    func getWeather() {
+    private func getWeather() {
         indicator.startAnimating()
         let request = CurrentWeather.GetWeather.Request()
         interactor?.getWeather(request: request)
     }
     
-    func displaySomething(viewModel: CurrentWeather.GetWeather.ViewModel) {
-        DispatchQueue.main.async { [weak self] in
-            self?.indicator.stopAnimating()
-            self?.countryName.text = viewModel.weather.countryName?.uppercased()
-            self?.weatherImage.image = viewModel.weather.weatherImage
-            self?.tempLb.text = "Tep: " + (viewModel.weather.temperature ?? "") 
-        }
+    func displayCurrentWeather(viewModel: CurrentWeather.GetWeather.ViewModel) {
+        self.indicator.stopAnimating()
+        self.countryName.text = viewModel.weather.countryName?.uppercased()
+        self.weatherImage.image = viewModel.weather.weatherImage
+        self.tempLb.text = "Tep: " + (viewModel.weather.temperature ?? "")
     }
 }

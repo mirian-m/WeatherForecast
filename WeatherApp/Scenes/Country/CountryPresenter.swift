@@ -16,7 +16,7 @@ protocol CountryPresentationLogic {
   func presentCountries(response: Country.GetCountry.Response)
 }
 
-class CountryPresenter: CountryPresentationLogic {
+final class CountryPresenter: CountryPresentationLogic {
   weak var viewController: CountryDisplayLogic?
   
   // MARK: Do something

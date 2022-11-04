@@ -16,13 +16,13 @@ protocol CurrentWeatherPresentationLogic {
     func presentCurrenWeather(response: CurrentWeather.GetWeather.Response)
 }
 
-class CurrentWeatherPresenter: CurrentWeatherPresentationLogic {
+final class CurrentWeatherPresenter: CurrentWeatherPresentationLogic {
     weak var viewController: CurrentWeatherDisplayLogic?
     
     // MARK: Do something
     func presentCurrenWeather(response: CurrentWeather.GetWeather.Response) {
         let viewModel = CurrentWeather.GetWeather.ViewModel(weather: createWeatherViewModel(by: response.weather!))
-        viewController?.displaySomething(viewModel: viewModel)
+        viewController?.displayCurrentWeather(viewModel: viewModel)
     }
     
     func createWeatherViewModel(by model: Weather) -> WeatherViewModel {
