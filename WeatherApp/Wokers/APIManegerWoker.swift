@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class APIManeger {
+final class APIManeger {
     
     //    MARK:- FetchData by String
     func fetchData<T: Decodable>(by urlString: String, complition: @escaping ((Result<[T], Error>) -> Void)) {

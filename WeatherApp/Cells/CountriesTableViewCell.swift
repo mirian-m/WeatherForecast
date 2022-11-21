@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CountriesTableViewCell: UITableViewCell {
+final class CountriesTableViewCell: UITableViewCell {
     static let identifier = "CountriesTableViewCell"
     
    private lazy var countryLb: UILabel = {

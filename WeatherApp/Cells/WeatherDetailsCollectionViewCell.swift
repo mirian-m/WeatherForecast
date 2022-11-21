@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WeatherDetailsCollectionViewCell: UICollectionViewCell {
+final class WeatherDetailsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var timeLb: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!

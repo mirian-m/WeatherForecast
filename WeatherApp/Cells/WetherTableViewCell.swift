@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WetherTableViewCell: UITableViewCell {
+final class WetherTableViewCell: UITableViewCell {
     
     @IBOutlet weak var weatherDetailsCollectionView: UICollectionView! {
         didSet {
