@@ -18,9 +18,9 @@ class WetherTableViewCell: UITableViewCell {
     }
     
     private var forecastModel = [WeatherForecastModel]()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

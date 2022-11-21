@@ -9,6 +9,11 @@ import Foundation
 import UIKit
 
 struct CountryModel: Decodable {
-    let name: String
+    let name: String?
     let latlng: [Double]?
+    let flags: Flags?
+}
+
+struct Flags: Codable {
+    let png: String?
 }

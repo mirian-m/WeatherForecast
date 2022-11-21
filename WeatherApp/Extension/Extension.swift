@@ -31,3 +31,16 @@ extension Date {
         self = Calendar.current.date(byAdding: .day, value: 1, to: self)!
     }
 }
+
+extension UIImageView {
+    func getImageBy(urlStr: String) {
+        guard let url = URL(string: urlStr) else { return }
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let  data = data, error == nil else { return }
+            DispatchQueue.main.async {
+                let image = UIImage(data: data)
+                self.image = image
+            }
+        }.resume()
+    }
+}

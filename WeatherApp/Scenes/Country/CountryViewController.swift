@@ -33,6 +33,7 @@ final class CountryViewController: UITableViewController, CountryDisplayLogic {
         super.init(coder: aDecoder)
         setup()
     }
+    
     // MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +83,7 @@ extension CountryViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CountriesTableViewCell.identifier, for: indexPath) as? CountriesTableViewCell else { return UITableViewCell() }
         let currentCountry = countries[indexPath.row]
-        cell.countryLb.text = currentCountry.name
+        cell.updateCell(countryDetails: currentCountry)
         return cell
         
     }
